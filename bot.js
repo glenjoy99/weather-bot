@@ -15,12 +15,14 @@ var T = new Twit({
 
 var out;
 var curr;
+var skytxt;
 
 var tweetCurrWeather = function () {
   weather.find({search: 'Gaithersburg, MD', degreeType: 'F'}, function(err, result) {
     if(err) console.log(err);
     curr = result[0].current.temperature;
-    var str = "It is currently " + curr + " degrees Fahrenheit in Gaithersburg";
+    skytxt = result[0].current.skytext;
+    var str = "It is currently " + curr + " degrees Fahrenheit and " + skytxt + " in Gaithersburg";
     T.post('statuses/update', { status: str }, function(err, data, response) {
       console.log('Tweeted!');
     })
