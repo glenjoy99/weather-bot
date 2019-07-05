@@ -6,7 +6,8 @@
     "start": "node bot.js"
   },
   "dependencies": {
-    "twit": "^2.2.11"
+    "twit": "^2.2.11",
+    "weather-js": "^2.0.0"
   },
   "author": "Glen",
   "license": "ISC"
