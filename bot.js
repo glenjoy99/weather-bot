@@ -3,13 +3,12 @@
 
 console.log("Bot started");
 
-var Twit = require('twit')
+var Twit = require('twit');
+var Weather = require('weather.js');
 
-// var T = new Twit({
-//   consumer_key:         '...',
-//   consumer_secret:      '...',
-//   access_token:         '...',
-//   access_token_secret:  '...',
-//   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
-//   strictSSL:            true,     // optional - requires SSL certificates to be valid.
-// })
+var T = new Twit({
+  consumer_key:         'TQyMiBduZKDuzYok50G5FLgWA',
+  consumer_secret:      'knnCJ7KyvjGJlgnb3fGuEi5wTyccbijJDhVLkZuVZf7Fax5vnv',
+  access_token:         '1146897859519946753-r2eEsCO69OeF3QmtD7KCI8eG1Rby7l',
+  access_token_secret:  'LBFBeNEbsfiJ5O5tztf0nlsvhibbSr4ZSVhdT9PnerbIF',
+})
