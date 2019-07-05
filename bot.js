@@ -1,5 +1,5 @@
 //Author Glen Joy
-// Version 1.0.0
+//Version 1.0.0
 
 console.log("Bot started");
 
@@ -16,18 +16,15 @@ var T = new Twit({
 var out;
 var curr;
 
-weather.find({search: 'Gaithersburg, MD', degreeType: 'F'}, function(err, result) {
-  if(err) console.log(err);
+var tweetCurrWeather = function () {
+  weather.find({search: 'Gaithersburg, MD', degreeType: 'F'}, function(err, result) {
+    if(err) console.log(err);
+    curr = result[0].current.temperature;
+    var str = "It is currently " + curr + " degrees Fahrenheit in Gaithersburg";
+    T.post('statuses/update', { status: str }, function(err, data, response) {
+      console.log('Tweeted!');
+    })
+  });
+}
 
-  //console.log(JSON.stringify(result, null, 2));
-  //out = JSON.parse(result);
-
-  curr = result[0].current.temperature;
-  //console.log(curr);
-  var str = "It is currently " + curr + " degrees Fahrenheit in Gaithersburg";
-
-  T.post('statuses/update', { status: str }, function(err, data, response) {
-    //console.log(data)
-    console.log('Tweeted!');
-  })
-});
+setInterval(tweetCurrWeather, 10800000); //tweets every 3 hours
