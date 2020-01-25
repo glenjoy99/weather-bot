@@ -52,13 +52,16 @@ var tweetTodayForecast = function () {
       todayHigh = result[4].forecast[4].high;
       todayLow = result[4].forecast[4].low;
     }
-    var str = "The forecast today is a high of " + todayHigh + " and a low of " + todayLow + " degrees Fahrenheit in Gaithersburg";
+    if ((todayHigh != undefined) && (todayLow != undefined)) {
+      var str = "The forecast today is a high of " + todayHigh + " and a low of " + todayLow + " degrees Fahrenheit in Gaithersburg";
+    } else {
+      var str = "Forecast data is currently unavailable on weekends. Enjoy your day!"
+    }
     T.post('statuses/update', { status: str }, function(err, data, response) {
       console.log('Tweeted!');
     })
   });
 }
-
 
 setInterval(tweetCurrWeather, 10800000); //tweets every 3 hours
 setInterval(tweetTodayForecast, 32400000); //tweets every 9 hours
